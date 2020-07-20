@@ -19,6 +19,7 @@
 		<kotlin.version>1.3.72</kotlin.version>
 		<springdoc.version>1.4.3</springdoc.version>
 		<sql-mvn-plugin.version>1.5</sql-mvn-plugin.version>
+		<build-helper-maven-plugin.version>3.0.0</build-helper-maven-plugin.version>
 	</properties>
 
 	<dependencies>
@@ -83,7 +84,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>build-helper-maven-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>${build-helper-maven-plugin.version}</version>
 				<executions>
 					<execution>
 						<phase>generate-sources</phase>
@@ -92,7 +93,7 @@
 						</goals>
 						<configuration>
 							<sources>
-								<source>target/generated-code</source>
+								<source>${basedir}/target/generated-sources</source>
 							</sources>
 						</configuration>
 					</execution>
@@ -194,7 +195,7 @@
 
 								<target>
 									<packageName>com.fynnian.springopenapi3.jooq</packageName>
-									<directory>${project.basedir}/target/generated-code</directory>
+									<directory>${project.basedir}/target/generated-sources/jooq</directory>
 								</target>
 							</generator>
 						</configuration>
