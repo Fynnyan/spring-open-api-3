@@ -15,7 +15,7 @@ class UserController(private val generalRepository: GeneralRepository) {
 
   @GetMapping("/{userId}")
   fun getUser(@PathVariable userId: String): User =
-      generalRepository.getUserById(userId) ?: throw EntryNotFound("There is no user with userId: $userId")
+      generalRepository.getUserById(UserId(userId)) ?: throw EntryNotFound("There is no user with userId: $userId")
 
   @PostMapping
   @ResponseStatus(HttpStatus.NO_CONTENT)
@@ -28,13 +28,12 @@ class UserController(private val generalRepository: GeneralRepository) {
   fun updateUser(@PathVariable userId: String,
                  @RequestBody user: UserUpdateRequest) {
     generalRepository.updateUser(user.patchUser(
-        generalRepository.getUserById(userId) ?: throw EntryNotFound("There is no user with userId: $userId")))
+        generalRepository.getUserById(UserId(userId)) ?: throw EntryNotFound("There is no user with userId: $userId")))
   }
-
 
   @DeleteMapping("/{userId}")
   @ResponseStatus(HttpStatus.NO_CONTENT)
   fun deleteUser(@PathVariable userId: String) {
-    generalRepository.deleteUser(userId)
+    generalRepository.deleteUser(UserId(userId))
   }
 }

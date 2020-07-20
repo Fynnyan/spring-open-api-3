@@ -4,7 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema
 import java.util.*
 
 data class User(
-    val userId: String = UUID.randomUUID().toString(),
+    val userId: UserId = UserId(),
     val firstName: String,
     val lastName: String,
     val language: Language,
