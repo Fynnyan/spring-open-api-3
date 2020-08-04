@@ -3,12 +3,14 @@ package com.fynnian.springopenapi3.controller
 import com.fynnian.springopenapi3.domain.*
 import com.fynnian.springopenapi3.repositories.GeneralRepository
 import io.swagger.v3.oas.annotations.Operation
+import io.swagger.v3.oas.annotations.tags.Tag
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import javax.validation.Valid
 
 @RestController
 @RequestMapping("/users")
+@Tag(name = "Users")
 class UserController(private val generalRepository: GeneralRepository) {
 
   @GetMapping
@@ -21,7 +23,7 @@ class UserController(private val generalRepository: GeneralRepository) {
   fun getUser(@PathVariable userId: String): User =
       generalRepository.getUserById(UserId(userId)) ?: throw EntryNotFound("There is no user with userId: $userId")
 
-@PostMapping
+  @PostMapping
   @ResponseStatus(HttpStatus.NO_CONTENT)
   @Operation(summary = "Create a new user")
   fun createUser(@RequestBody @Valid user: UserCreateRequest) {
