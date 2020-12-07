@@ -41,10 +41,12 @@ class OpenApiConfiguration @Autowired constructor(private val buildProperties: B
   }
 
   /**
-   * List of components that are globally available, can and need to be referenced if the want to be used someplace.
+   * List of components that are globally available, can and need to be referenced the swagger way.
+   * components > type > key
+   * example: #/components/headers/x-super-cool-global-header
    * Use the reference string on the refs field of the various annotations.
    *
-   * example: #/components/headers/x-super-cool-global-header
+   * @see [ApiRefs]
    */
   val components: Components = Components()
       .addHeaders("x-super-cool-global-header",

@@ -24,6 +24,7 @@ data class User(
   fun getUserId() = userId.value
 }
 
+@Schema(enumAsRef = true)
 enum class UserRole {
   STANDARD,
   PREMIUM,

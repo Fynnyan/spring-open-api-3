@@ -197,6 +197,11 @@
                                             <enumConverter>true</enumConverter>
                                             <includeExpression>.*\.role</includeExpression>
                                         </forcedType>
+                                        <forcedType>
+                                            <userType>com.fynnian.springopenapi3.domain.InvoiceCategory</userType>
+                                            <enumConverter>true</enumConverter>
+                                            <includeExpression>invoices\.category</includeExpression>
+                                        </forcedType>
                                     </forcedTypes>
                                 </database>
                                 <target>
